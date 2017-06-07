@@ -75,6 +75,8 @@ const getBotTimeline = () => {
   );
 };
 
+getBotTimeline();
+
 // retweet
 const retweet = () => {
   bot.post(
@@ -84,6 +86,8 @@ const retweet = () => {
       (err ? console.error(err) : console.log(`${data.text} was retweeted.`)),
   );
 };
+
+// retweet();
 
 // retweet
 const unretweet = () => {
@@ -95,4 +99,43 @@ const unretweet = () => {
   );
 };
 
-unretweet();
+// unretweet();
+
+// Like a tweet
+
+const likeTweet = () => {
+  bot.post(
+    'favorites/create',
+    { id: '872533675325349888' },
+    (err, data, _res) =>
+      (err ? console.error(err) : console.log(`${data.text} was liked.`)),
+  );
+};
+
+// likeTweet();
+
+const unlikeTweet = () => {
+  bot.post(
+    'favorites/destroy',
+    { id: '872533675325349888' },
+    (err, data, _res) =>
+      (err ? console.error(err) : console.log(`${data.text} was unliked.`)),
+  );
+};
+
+// unlikeTweet();
+
+// Reply to tweet
+const replyTweet = () => {
+  bot.post(
+    'statuses/update',
+    {
+      status: "@tomdale I am ui_engineer's boss twitter bot",
+      in_reply_to_status_id: '872536950099529728',
+    },
+    (err, data, _res) =>
+      (err ? console.error(err) : console.log(`${data.text} was replied to.`)),
+  );
+};
+
+replyTweet();
